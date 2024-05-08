@@ -1,0 +1,128 @@
+/* Estilo geral para a div de agendamento de sala */
+.room-booking-form {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px; /* Define uma largura máxima para manter a div compacta */
+    margin: 0 auto; /* Centraliza a div na página */
+    padding: 20px; /* Adiciona um pouco de espaçamento interno */
+    border-radius: 8px; /* Adiciona cantos arredondados */
+    background-color: #f0f4f8; /* Define a cor de fundo */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+}
+
+/* Estilo para o título do formulário */
+.room-booking-form h2 {
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Adiciona espaço abaixo do título */
+    color: #333; /* Define a cor do texto */
+}
+
+/* Estilo para os campos de entrada */
+.room-booking-form input[type="text"],
+.room-booking-form input[type="date"],
+.room-booking-form input[type="time"] {
+    width: 100%; /* Define que os campos ocupem 100% da largura */
+    padding: 8px; /* Adiciona espaçamento interno */
+    margin-bottom: 10px; /* Adiciona espaço entre os campos */
+    border-radius: 4px; /* Adiciona cantos arredondados */
+    border: 1px solid #ccc; /* Define uma borda sutil */
+    font-size: 14px; /* Define o tamanho da fonte */
+}
+
+/* Estilo para o botão de envio */
+.room-booking-form button {
+    width: 100%; /* Define que o botão ocupe 100% da largura */
+    padding: 10px; /* Adiciona espaçamento interno */
+    border: none; /* Remove a borda padrão */
+    border-radius: 4px; /* Adiciona cantos arredondados */
+    background-color: #007bff; /* Define a cor de fundo do botão */
+    color: #fff; /* Define a cor do texto */
+    font-size: 16px; /* Define o tamanho da fonte */
+    cursor: pointer; /* Altera o cursor para pointer */
+    transition: background-color 0.3s; /* Adiciona uma transição para a cor de fundo */
+}
+
+/* Estilo para o botão de envio quando o mouse está sobre ele */
+.room-booking-form button:hover {
+    background-color: #0056b3; /* Altera a cor de fundo ao passar o mouse */
+}
+
+/* Media queries para tornar o formulário responsivo */
+@media (max-width: 480px) {
+    /* Ajusta o estilo para telas com largura máxima de 480px (celulares) */
+    .room-booking-form {
+        padding: 10px; /* Reduz o preenchimento para economizar espaço */
+    }
+    /* Ajusta o tamanho da fonte para campos de entrada e botão */
+    .room-booking-form input[type="text"],
+    .room-booking-form input[type="date"],
+    .room-booking-form input[type="time"],
+    .room-booking-form button {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+    /* Ajusta o tamanho do botão */
+    .room-booking-form button {
+        padding: 8px; /* Reduz o preenchimento interno do botão */
+    }
+}
+
+
+.logo {
+    height: 100%;
+    width: 100%;
+}
+
+.retorno {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    line-height: 1.5;
+    padding-right: 5px;
+    text-decoration: none;
+    position: flex;
+    
+}
+
+.txt2{
+  text-decoration: none;
+  color: black;
+}
+.custom-button {
+    background-color: #ffaf4d; /* Verde */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.custom-button:hover {
+    background-color: #d09a24;
+}
+
+
+.horario-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.horario-button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.horario-button.selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.horario-button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

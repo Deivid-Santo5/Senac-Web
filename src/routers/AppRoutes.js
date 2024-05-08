@@ -1,0 +1,35 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import Login from '../pages/login/index';
+import Register from '../pages/register/index';
+import Home from '../pages/home/home';
+import Sala from '../pages/salas/salas';
+import Equipamento from '../pages/equipamentos/equipamentos';
+import Gerenciamento from '../pages/adm controle/add_sala_equip';
+import RelatorioSala from '../pages/salas/relatoriosala/relatoriosala';
+import RelatorioEquipamento from '../pages/equipamentos/RelatorioEquipamento/relatorioequipamento';
+
+
+
+
+
+export default function AppRoutes() {
+
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Login />}></Route>
+                <Route path="/Register" element={<Register />}></Route>
+                <Route path="/Home" element={<Home />}></Route>
+                <Route path="/Sala" element={<Sala />}></Route>
+                <Route path="/Equipamento" element={<Equipamento />}></Route>
+                <Route path="/Gerenciamento" element={<Gerenciamento />}></Route>
+                <Route path="/RelatorioSala" element={<RelatorioSala />}></Route>
+                <Route path="/RelatorioEquipamento" element={<RelatorioEquipamento />}></Route>
+
+            </Routes>
+
+
+        </BrowserRouter>
+    )
+}
