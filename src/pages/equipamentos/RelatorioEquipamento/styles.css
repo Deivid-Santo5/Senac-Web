@@ -31,6 +31,11 @@
 
 @media screen and (max-width: 600px) {
     .table th, .table td {
-        padding: 8px;
+        padding: 6px; /* Reduz o padding para telas menores */
+    }
+
+    .table-container {
+        overflow-x: auto;
+        display: block; /* Faz com que a tabela role horizontalmente em telas menores */
     }
 }

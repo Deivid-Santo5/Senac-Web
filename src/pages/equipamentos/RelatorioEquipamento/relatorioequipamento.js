@@ -56,7 +56,7 @@ export default function RelatorioEquipamento() {
 
     return (
         <div className="table-container">
-<button><Link className='retorno' to='/Equipamento'>Voltar ao Agendamento</Link></button>
+            <button><Link className='retorno' to='/Equipamento'>Voltar ao Agendamento</Link></button>
             <h2>Relatório de Agendamentos de Equipamento</h2>
             <table className="table">
                 <thead>
@@ -71,7 +71,7 @@ export default function RelatorioEquipamento() {
                 <tbody>
                     {agendamentos.map((agendamento) => (
                         <tr key={agendamento.id} className={getClassByDate(agendamento.date)}>
-                            <td>{new Date(agendamento.date).toLocaleDateString('pt-BR')}</td>
+                            <td>{agendamento.date instanceof Date ? agendamento.date.toLocaleDateString('pt-BR') : agendamento.date}</td>
                             <td>{agendamento.startTime} - {agendamento.endTime}</td>
                             <td>{agendamento.equipamento}</td>
                             <td>{agendamento.requesterName}</td>
