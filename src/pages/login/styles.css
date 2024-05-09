@@ -8,6 +8,7 @@ body {
 }
 
 
+
 .container {
     width: 90%; /* Alterado para porcentagem para ser responsivo */
     max-width: 600px; /* Definindo uma largura máxima */
@@ -23,6 +24,7 @@ body {
     padding: 15px;
 }
 
+
 .wrap-login {
     width: 100%;
     max-width: 400px; /* Definindo uma largura máxima */
@@ -34,22 +36,25 @@ body {
 }
 
 .login-form {
-    width: 100%;
+    width:100%;
 }
 
 .login-form-title {
     display: block;
     font-size: 30px;
     color: azure;
-
+    width: 100%;
+    height: auto;
     line-height: 1.2;
     text-align: center;
 
 }
 
-.login-form-title img {
-    width: 200px;
+.logo{
+    width: 350px;
+    height: auto;
 }
+
 
 .wrap-input {
     width: 100%;
@@ -162,6 +167,7 @@ input:focus+.focus-input::before {
     border: none;
     border-radius: 10px;
     color: #fff;
+    background-color: rgb (110, 138, 239);
 
     line-height: 1.2;
 
@@ -173,12 +179,6 @@ input:focus+.focus-input::before {
 
     width: 100%;
     height: 50px;
-
-
-    background: -webkit-linear-gradient(to left, rgb(143, 165, 244), rgb(254, 155, 98));
-    background: -o-linear-gradient(to left, rgb(143, 165, 244), rgb(254, 155, 98));
-    background: -moz-linear-gradient(to left, rgb(143, 165, 244), rgb(254, 155, 98));
-    background: linear-gradient(to left, rgb(143, 165, 244), rgb(254, 155, 98));
 }
 
 .login-form-btn:hover {

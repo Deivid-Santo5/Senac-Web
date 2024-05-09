@@ -104,7 +104,7 @@ function Login() {
                             <div className="wrap-login">
                                 <form className="login-form" onSubmit={handleSignIn}>
                                     <span className="login-form-title">
-                                        <img src={logo} alt="Logos" />
+                                        <img className='logo' src={logo} alt="Logos" />
                                     </span>
 
                                     <div className="wrap-input">

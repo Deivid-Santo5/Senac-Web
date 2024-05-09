@@ -3,6 +3,7 @@ import { db } from '../../../services/firebaseconfig'; // Importando 'db' para a
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import './styles.css'; // Importar o CSS para estilização
 import { Link } from 'react-router-dom';
+import ImportPdf from '../../componentes/importpdf/importpdf'; // Corrigindo a importação do componente ImportPdf
 
 export default function RelatorioEquipamento() {
     const [agendamentos, setAgendamentos] = useState([]); // State para armazenar os agendamentos
@@ -59,31 +60,31 @@ export default function RelatorioEquipamento() {
             <button><Link className='retorno' to='/Equipamento'>Voltar ao Agendamento</Link></button>
             <h2>Relatório de Agendamentos de Equipamento</h2>
             <table className="table">
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Horário</th>
-                        <th>Equipamento</th>
-                        <th>Solicitante</th>
-                        <th>Ações</th> {/* Adicionando uma coluna para as ações */}
-                    </tr>
-                </thead>
-                <tbody>
-                    {agendamentos.map((agendamento) => (
-                        <tr key={agendamento.id} className={getClassByDate(agendamento.date)}>
-                            <td>{agendamento.date instanceof Date ? agendamento.date.toLocaleDateString('pt-BR') : agendamento.date}</td>
-                            <td>{agendamento.startTime} - {agendamento.endTime}</td>
-                            <td>{agendamento.equipamento}</td>
-                            <td>{agendamento.requesterName}</td>
-                            <td>
-                                <button onClick={() => {
-                                    setAgendamentoExcluir(agendamento);
-                                    setModalVisible(true);
-                                }}>Excluir</button> {/* Botão para excluir o agendamento */}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
+            <thead>
+    <tr>
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Equipamento</th>
+        <th>Solicitante</th>
+        <th>Ações</th>
+    </tr>
+</thead>
+<tbody>
+    {agendamentos.map((agendamento) => (
+        <tr key={agendamento.id} className={getClassByDate(agendamento.date)}>
+            <td>{agendamento.date instanceof Date ? agendamento.date.toLocaleDateString('pt-BR') : agendamento.date}</td>
+            <td>{agendamento.startTime} - {agendamento.endTime}</td>
+            <td>{agendamento.equipamento}</td>
+            <td>{agendamento.requesterName}</td>
+            <td>
+                <button onClick={() => {
+                    setAgendamentoExcluir(agendamento);
+                    setModalVisible(true);
+                }}>Excluir</button>
+            </td>
+        </tr>
+    ))}
+</tbody>
             </table>
 
             {/* Modal de confirmação */}
@@ -99,6 +100,7 @@ export default function RelatorioEquipamento() {
                                 setAgendamentoExcluir(null);
                             }}>Cancelar</button>
                         </div>
+                        <ImportPdf agendamentos={agendamentos}/> {/* Passando os agendamentos para o componente ImportPdf */}
                     </div>
                 </div>
             )}
