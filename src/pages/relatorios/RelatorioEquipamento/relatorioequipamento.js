@@ -3,16 +3,17 @@ import { db } from '../../../services/firebaseconfig'; // Importando 'db' para a
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import './styles.css'; // Importar o CSS para estilização
 import { Link } from 'react-router-dom';
+import ImportPdf from '../../componentes/importpdf/importpdf'; // Corrigindo a importação do componente ImportPdf
 
-export default function RelatorioSala() {
+export default function RelatorioEquipamento() {
     const [agendamentos, setAgendamentos] = useState([]); // State para armazenar os agendamentos
-    const [modalVisible, setModalVisible] = useState(false); // State para controlar a visibilidade do modal
-    const [agendamentoIdToDelete, setAgendamentoIdToDelete] = useState(null); // State para armazenar o ID do agendamento a ser excluído
+    const [agendamentoExcluir, setAgendamentoExcluir] = useState(null); // State para armazenar o agendamento a ser excluído
+    const [modalVisible, setModalVisible] = useState(false); // State para controlar a visibilidade do modal de confirmação
 
     useEffect(() => {
         const buscarAgendamentos = async () => {
             try {
-                const agendamentoRef = collection(db, 'AgendamentoSala');
+                const agendamentoRef = collection(db, 'AgendamentoEquipamento');
                 const querySnapshot = await getDocs(agendamentoRef);
                 const listaAgendamentos = [];
                 querySnapshot.forEach((doc) => {
@@ -20,7 +21,7 @@ export default function RelatorioSala() {
                 });
                 setAgendamentos(listaAgendamentos);
             } catch (error) {
-                console.error('Erro ao buscar agendamentos de sala:', error);
+                console.error('Erro ao buscar agendamentos de equipamento:', error);
             }
         };
 
@@ -40,65 +41,71 @@ export default function RelatorioSala() {
         }
     };
 
-    // Função para excluir um agendamento
-    const handleExcluirAgendamento = async (id) => {
-        setAgendamentoIdToDelete(id);
-        setModalVisible(true);
-    };
-
-    // Função para confirmar a exclusão de um agendamento
-    const confirmarExclusao = async () => {
-        try {
-            await deleteDoc(doc(db, 'AgendamentoSala', agendamentoIdToDelete));
-            setAgendamentos(agendamentos.filter(agendamento => agendamento.id !== agendamentoIdToDelete));
-            setModalVisible(false);
-        } catch (error) {
-            console.error('Erro ao excluir agendamento:', error);
+    // Função para lidar com a exclusão de um agendamento
+    const handleExcluirAgendamento = async () => {
+        if (agendamentoExcluir) {
+            try {
+                await deleteDoc(doc(db, 'AgendamentoEquipamento', agendamentoExcluir.id));
+                setAgendamentos(agendamentos.filter((agendamento) => agendamento.id !== agendamentoExcluir.id));
+                setModalVisible(false);
+                setAgendamentoExcluir(null);
+            } catch (error) {
+                console.error('Erro ao excluir agendamento:', error);
+            }
         }
-    };
-
-    // Função para fechar o modal de confirmação
-    const fecharModal = () => {
-        setModalVisible(false);
     };
 
     return (
         <div className="table-container">
-            <button><Link className='retorno' to='/Sala'>Volta ao Agendamento</Link></button>
-            <h2>Relatório de Agendamentos de Sala</h2>
+
+
+            <Link to="/Relatorios">
+                <button>Voltar</button>
+            </Link>
+
+            <h2>Relatório de Agendamentos de Equipamento</h2>
             <table className="table">
                 <thead>
                     <tr>
                         <th>Data</th>
                         <th>Horário</th>
-                        <th>Sala</th>
+                        <th>Equipamento</th>
                         <th>Solicitante</th>
-                        <th>Ações</th>
+                        <th>Ações</th> {/* Adicionando uma coluna para as ações */}
                     </tr>
                 </thead>
                 <tbody>
                     {agendamentos.map((agendamento) => (
                         <tr key={agendamento.id} className={getClassByDate(agendamento.date)}>
-                            <td>{new Date(agendamento.date).toLocaleDateString('pt-BR')}</td>
+                            <td>{agendamento.date instanceof Date ? agendamento.date.toLocaleDateString('pt-BR') : agendamento.date}</td>
                             <td>{agendamento.startTime} - {agendamento.endTime}</td>
-                            <td>{agendamento.sala}</td>
+                            <td>{agendamento.equipamento}</td>
                             <td>{agendamento.requesterName}</td>
                             <td>
-                                <button onClick={() => handleExcluirAgendamento(agendamento.id)}>Excluir</button>
+                                <button onClick={() => {
+                                    setAgendamentoExcluir(agendamento);
+                                    setModalVisible(true);
+                                }}>Excluir</button> {/* Botão para excluir o agendamento */}
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+
+            {/* Modal de confirmação */}
             {modalVisible && (
                 <div className="modal">
                     <div className="modal-content">
                         <h3>Atenção</h3>
                         <p>Tem certeza que deseja excluir este agendamento?</p>
                         <div className="modal-buttons">
-                            <button onClick={confirmarExclusao}>Sim</button>
-                            <button onClick={fecharModal}>Não</button>
+                            <button onClick={handleExcluirAgendamento}>Sim</button>
+                            <button onClick={() => {
+                                setModalVisible(false);
+                                setAgendamentoExcluir(null);
+                            }}>Cancelar</button>
                         </div>
+                        <ImportPdf agendamentos={agendamentos} /> {/* Passando os agendamentos para o componente ImportPdf */}
                     </div>
                 </div>
             )}

@@ -19,6 +19,7 @@ export default function Home() {
                 <Button to="/Sala" text="Ver Salas Disponiveis" />
                 <Button to="/Equipamento" text="Ver Equipamentos Disponiveis" />
                 <Button to="/Gerenciamento" text="Gerenciar Serviços" />
+                <Button to="/Relatorios" text="Ver Registros" />
 
             </section>
         </div>

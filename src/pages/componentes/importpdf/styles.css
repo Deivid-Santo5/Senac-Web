@@ -1,0 +1,17 @@
+.import-pdf-container {
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+.import-pdf-button {
+    font-size: 16px;
+    padding: 10px 20px; /* Espaçamento interno */
+    background-color: #007bff; /* Cor de fundo */
+    color: #ffffff; /* Cor do texto */
+    border: none; /* Remover borda */
+    border-radius: 5px; /* Arredondar cantos */
+    cursor: pointer; /* Alterar cursor ao passar o mouse */
+}
+
+.import-pdf-button:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}

@@ -4,7 +4,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(143, 165, 244);
+    background-color: rgb(29, 55, 108);
 }
 
 
@@ -22,6 +22,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 15px;
+    background-color: rgb(29, 55, 108);
 }
 
 
@@ -105,10 +106,10 @@ body {
     -o-transition: all 0.4s;
     -o-transition: all 0.4s;
 
-    background: -webkit-linear-gradient(to left, rgb(143, 165, 244), rgb(254, 155, 98));
-    background: -o-linear-gradient(to left, rgb(143, 165, 244), rgb(254, 155, 98));
-    background: -moz-linear-gradient(to left, rgb(143, 165, 244), rgb(254, 155, 98));
-    background: linear-gradient(to left, rgb(143, 165, 244), rgb(254, 155, 98));
+    background: -webkit-linear-gradient(to left, rgb(29, 55, 108), rgb(254, 155, 98));
+    background: -o-linear-gradient(to left, rgb(29, 55, 108), rgb(254, 155, 98));
+    background: -moz-linear-gradient(to left, rgb(29, 55, 108), rgb(254, 155, 98));
+    background: linear-gradient(to left, rgb(29, 55, 108), rgb(254, 155, 98));
 }
 
 .focus-input::after {
@@ -215,11 +216,11 @@ span.logando {
     height: 60px;
     background-color: transparent;
     display: block;
-    border: 12px solid rgb(248, 106, 25);  /* Cor base para o border */
+    border: 12px solid rgb(33, 86, 193);  /* Cor base para o border */
     border-top-color: transparent;  /* Torna o border-top transparente */
    
-    border-left-color: rgb(248, 106, 25);  /* Cor para o lado esquerdo */
-    border-right-color: rgb(248, 106, 25); /* Cor para o lado direito */
+    border-left-color: rgb(33, 86, 193);  /* Cor para o lado esquerdo */
+    border-right-color: rgb(33, 86, 193); /* Cor para o lado direito */
     border-radius: 50%;  /* Forma circular */
     animation: logando 0.5s ease infinite;  /* Animação */
 }

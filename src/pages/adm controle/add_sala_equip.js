@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../../services/firebaseconfig';
 import { collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc, setDoc } from 'firebase/firestore';
 import { Modal, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
 import './styles.css';
+
 
 
 function Gerenciamento() {
@@ -120,9 +121,8 @@ function Gerenciamento() {
             <Button variant="primary" onClick={() => handleOpenModal('room')}>
                 Adicionar Nova Sala
             </Button>
-
-            <Button variant='primary'><Link className='retorno' to='/Home'>Inicio</Link></Button>
-
+         
+                
             {/* Botão para abrir o modal para adicionar um novo equipamento */}
             <Button variant="primary" onClick={() => handleOpenModal('equipamento')}>
                 Adicionar Novo Equipamento
@@ -138,6 +138,8 @@ function Gerenciamento() {
                             Editar
                         </Button>
                         
+                         
+
                         <Button variant="danger" onClick={() => handleDeleteItem('room', room.id)}>
                             Excluir
                         </Button>
@@ -188,6 +190,7 @@ function Gerenciamento() {
                                 required
                             />
                         </div>
+                       
                     </form>
                 </Modal.Body>
                 <Modal.Footer className='modal-footer'>

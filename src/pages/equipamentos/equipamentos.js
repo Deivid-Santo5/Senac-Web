@@ -17,8 +17,8 @@ export default function AgendamentoEquipamento() {
     const [requesterName, setRequesterName] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
-    const [modalTitle, setModalTitle] = useState('');
-   
+    const [setModalTitle] = useState('');
+
 
     useEffect(() => {
         const fetchEquipamentos = async () => {
@@ -52,7 +52,7 @@ export default function AgendamentoEquipamento() {
         };
         try {
             await addDoc(collection(db, 'AgendamentoEquipamento'), bookingData);
-            setModalTitle('');
+            
             setModalMessage('Agendamento concluído com sucesso!');
             setModalVisible(true);
             setSelectedEquipamento('');
@@ -70,87 +70,89 @@ export default function AgendamentoEquipamento() {
 
     return (
         <div>
-        <div className="room-booking-form">
-            
-            <img className='logo' src={logo} alt="Logos" />
-            <h2>Agendamento de Equipamento</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Equipamento:</label>
-                    <select
-                        value={selectedEquipamento}
-                        onChange={(e) => setSelectedEquipamento(e.target.value)}
-                        required
-                    >
-                        <option value="">Selecione um equipamento</option>
-                        {equipamentos.map(equipamento => (
-                            <option key={equipamento.id} value={equipamento.id}>
-                                {equipamento.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div>
-                    <label>Data:</label>
-                    <DatePicker
-                        selected={date}
-                        onChange={(date) => setDate(date)}
-                        minDate={new Date()}
-                        dateFormat="dd/MM/yyyy"
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Hora de Início:</label>
-                    <input
-                        type="time"
-                        value={startTime}
-                        min="07:00"
-                        max="22:00"
-                        onChange={(e) => setStartTime(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Hora de Término:</label>
-                    <input
-                        type="time"
-                        value={endTime}
-                        min={startTime}
-                        max="22:00"
-                        onChange={(e) => setEndTime(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Nome do Solicitante:</label>
-                    <input
-                        type="text"
-                        value={requesterName}
-                        onChange={(e) => setRequesterName(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit">Agendar Equipamento</button>
-                
-                <Link className='retorno' to='/Home'>Página Inicial</Link>
-            </form>
+            <div className="room-booking-form">
 
-            <Modal show={modalVisible} onHide={() => setModalVisible(false)}>
-                <Modal.Header>
-                    <Modal.Title>{modalTitle}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{modalMessage}</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="primary" className='custom-button' onClick={() => setModalVisible(false)}>
-                        Fechar
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-            
+                <img className='logo' src={logo} alt="Logos" />
+                <h2>Agendamento de Equipamento</h2>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>Equipamento:</label>
+                        <select
+                            value={selectedEquipamento}
+                            onChange={(e) => setSelectedEquipamento(e.target.value)}
+                            required
+                        >
+                            <option value="">Selecione um equipamento</option>
+                            {equipamentos.map(equipamento => (
+                                <option key={equipamento.id} value={equipamento.id}>
+                                    {equipamento.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Data:</label>
+                        <DatePicker
+                            selected={date}
+                            onChange={(date) => setDate(date)}
+                            minDate={new Date()}
+                            dateFormat="dd/MM/yyyy"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Hora de Início:</label>
+                        <input
+                            type="time"
+                            value={startTime}
+                            min="07:00"
+                            max="22:00"
+                            onChange={(e) => setStartTime(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Hora de Término:</label>
+                        <input
+                            type="time"
+                            value={endTime}
+                            min={startTime}
+                            max="22:00"
+                            onChange={(e) => setEndTime(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Nome do Solicitante:</label>
+                        <input
+                            type="text"
+                            value={requesterName}
+                            onChange={(e) => setRequesterName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button type="submit">Agendar Equipamento</button>
+
+                    <Link className='retorno' to='/Home'>Página Inicial</Link>
+                </form>
+
+                <Modal show={modalVisible} onHide={() => setModalVisible(false)}>
+                   
+                    {modalMessage}
+                    <Modal.Footer>
+                        <Button variant="primary" className='custom-button' onClick={() => setModalVisible(false)}>
+                            Fechar
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+
+            </div>
+
+            <Link className='txt2' to="/Sala">
+    <button>Ir para Salas</button>
+              </Link>
+
         </div>
-        <button><Link className="txt2" to="/RelatorioEquipamento">Ver Agendamentos Recentes</Link></button>
-        </div>
-        
+
     );
 }

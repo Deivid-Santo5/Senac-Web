@@ -9,7 +9,7 @@
 
 /* Estilo para títulos */
 h2 {
-    color: #2c3e50; /* Cor de título escura */
+    color: #ffffff; /* Cor de título escura */
     margin-bottom: 10px;
     font-weight: bold;
   
@@ -96,3 +96,4 @@ button:hover {
 .modal-footer button {
     margin-left: 10px; /* Espaçamento entre os botões dentro do modal */
 }
+

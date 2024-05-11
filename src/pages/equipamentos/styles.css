@@ -67,6 +67,12 @@
     }
 }
 
+select {
+    height: 40px;
+    width: 100%; /* Defina a largura desejada */
+}
+
+
 
 .logo {
     height: 100%;

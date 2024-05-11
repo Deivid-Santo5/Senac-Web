@@ -8,6 +8,7 @@ import { Modal, Button } from 'react-bootstrap'; // Importando o Modal e Button 
 import DatePicker from 'react-datepicker'; // Importando DatePicker do 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'; // Importando os estilos do 'react-datepicker'
 
+
 export default function AgendamentoSala() {
     const [salas, setSalas] = useState([]); // State para armazenar a lista de salas disponíveis
     const [selectedSala, setSelectedSala] = useState(''); // State para a sala selecionada
@@ -105,89 +106,90 @@ export default function AgendamentoSala() {
 
     return (
         <div>
-         
 
 
-        <div className="room-booking-form">
-            <img className='logo' src={logo} alt="Logos" />
-            <h2>Agendamento de Sala</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Sala:</label>
-                    <select
-                        value={selectedSala}
-                        onChange={(e) => setSelectedSala(e.target.value)}
-                        required
-                    >
-                        <option value="">Selecione uma sala</option>
-                        {salas.map(sala => (
-                            <option key={sala.name} value={sala.name}>
-                                {sala.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div>
-                    <label>Data:</label>
-                    <DatePicker
-                        selected={date}
-                        onChange={(date) => setDate(date)}
-                        minDate={new Date()} // Não permitir selecionar datas anteriores
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Hora de Início:</label>
-                    <input
-                        type="time"
-                        value={startTime}
-                        min="07:00"
-                        max="22:00"
-                        onChange={(e) => setStartTime(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Hora de Término:</label>
-                    <input
-                        type="time"
-                        value={endTime}
-                        min={startTime} // Garante que o horário de término seja após o horário de início
-                        max="22:00"
-                        onChange={(e) => setEndTime(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Nome do Solicitante:</label>
-                    <input
-                        type="text"
-                        value={requesterName}
-                        onChange={(e) => setRequesterName(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit">Agendar Sala</button>
 
-                <Link className='retorno' to='/Home'>Página Inicial</Link>
-            </form>
+            <div className="room-booking-form">
+                <img className='logo' src={logo} alt="Logos" />
+                <h2>Agendamento de Sala</h2>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>Sala:</label>
+                        <select
+                            value={selectedSala}
+                            onChange={(e) => setSelectedSala(e.target.value)}
+                            required
+                        >
+                            <option value="">Selecione uma sala</option>
+                            {salas.map(sala => (
+                                <option key={sala.name} value={sala.name}>
+                                    {sala.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Data:</label>
+                        <DatePicker
+                            selected={date}
+                            onChange={(date) => setDate(date)}
+                            minDate={new Date()} // Não permitir selecionar datas anteriores
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Hora de Início:</label>
+                        <input
+                            type="time"
+                            value={startTime}
+                            min="07:00"
+                            max="22:00"
+                            onChange={(e) => setStartTime(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Hora de Término:</label>
+                        <input
+                            type="time"
+                            value={endTime}
+                            min={startTime} // Garante que o horário de término seja após o horário de início
+                            max="22:00"
+                            onChange={(e) => setEndTime(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Nome do Solicitante:</label>
+                        <input
+                            type="text"
+                            value={requesterName}
+                            onChange={(e) => setRequesterName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button type="submit">Agendar Sala</button>
 
-            <Modal show={modalVisible} onHide={() => setModalVisible(false)}>
-               
-                {modalTitle}
-                
-                {modalMessage}
-                
-                <Modal.Footer>
-                    <Button variant="primary" className='custom-button' onClick={() => setModalVisible(false)}>
-                        Fechar
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </div>
+                    <Link className='retorno' to='/Home'>Página Inicial</Link>
+                </form>
 
-        <button><Link className="txt2" to="/RelatorioSala">Ver Agendamentos Recentes </Link></button>
-        
+                <Modal show={modalVisible} onHide={() => setModalVisible(false)}>
+
+                    {modalTitle}
+
+                    {modalMessage}
+
+                    <Modal.Footer>
+                        <Button variant="primary" className='custom-button' onClick={() => setModalVisible(false)}>
+                            Fechar
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </div>
+            <Link to="/Equipamento">
+                <button>Ir para Equipamentos</button>
+            </Link>
+
         </div>
     );
 }
