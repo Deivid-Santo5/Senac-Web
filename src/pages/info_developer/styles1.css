@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+p {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.img-container img {
+  max-width: 300px;
+  height: auto;
+  margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .img-container img {
+      max-width: 200px;
+  }
+}
+
+/* Adicionando divisões entre as seções */
+.info-section {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.info-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}

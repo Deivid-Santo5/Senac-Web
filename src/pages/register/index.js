@@ -13,12 +13,12 @@ function Register() {
     const [modalContent, setModalContent] = useState('');
     const [
         createUserWithEmailAndPassword,
-        userCredential,
+        user,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    // Extraindo o usuário do userCredential
-    const user = userCredential?.user;
+
+
 
     // COMPONENTE PARA O FECHANDO DO MODAL
     const handleClose = () => setShowModal(false);
@@ -81,10 +81,10 @@ function Register() {
                             </span>
                             <div>
                                 <p className='msg'>Mensagem do sistema</p>
-                            <p className='msg'>
-                                Olá a todos, estamos cientes dos erros com a exibição de modal de Error após conta criada com sucesso, estamos trabalhando
-                                para resolver o problema, Obrigado pela compreensão...
-                            </p>
+                                <p className='msg'>
+                                    Olá a todos, estamos cientes dos erros com a exibição de modal de Error após conta criada com sucesso, estamos trabalhando
+                                    para resolver o problema, Obrigado pela compreensão...
+                                </p>
                             </div>
                             <form>
                                 <div className='wrap-input'>

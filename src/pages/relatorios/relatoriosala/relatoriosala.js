@@ -3,6 +3,7 @@ import { db } from '../../../services/firebaseconfig'; // Importando 'db' para a
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import './styles.css'; // Importar o CSS para estilização
 import { Link } from 'react-router-dom';
+import PDFGenerator from '../../componentes/jsPDF - SALA/jsPDF'; // Importe o componente PDFGenerator
 
 export default function RelatorioSala() {
     const [agendamentos, setAgendamentos] = useState([]); // State para armazenar os agendamentos
@@ -64,11 +65,11 @@ export default function RelatorioSala() {
 
     return (
         <div className="table-container">
-            
             <Link to="/Relatorios">
-    <button>Voltar</button>
-              </Link>
-
+                <button>Voltar</button>
+            </Link>
+            {/* Renderize o componente PDFGenerator aqui */}
+            <PDFGenerator data={agendamentos} />
             <h2>Relatório de Agendamentos de Sala</h2>
             <table className="table">
                 <thead>

@@ -14,6 +14,9 @@ export default function Relatorios() {
 
 
                 <h1>Escolha o Relatório que deseja ver</h1>
+                <p>
+                    Para melhor visibilidade em Aparelhos Celulares, favor baixe o relatorio em PDF ou veja com o aparelho na Horizontal
+                </p>
                
 
                 <Button to="/RelatorioSala" text="Ver Registros de Sala" />

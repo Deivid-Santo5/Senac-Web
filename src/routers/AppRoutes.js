@@ -9,6 +9,7 @@ import Gerenciamento from '../pages/adm controle/add_sala_equip';
 import RelatorioSala from '../pages/relatorios/relatoriosala/relatoriosala';
 import RelatorioEquipamento from '../pages/relatorios/RelatorioEquipamento/relatorioequipamento';
 import Relatorios from '../pages/relatorios/relatorios';
+import Developer from '../pages/info_developer/developer';
 
 
 
@@ -28,6 +29,7 @@ export default function AppRoutes() {
                 <Route path="/RelatorioSala" element={<RelatorioSala />}></Route>
                 <Route path="/RelatorioEquipamento" element={<RelatorioEquipamento />}></Route>
                 <Route path="/Relatorios" element={<Relatorios />}></Route>
+                <Route path="/Developer" element={<Developer />}></Route>
 
 
             </Routes>

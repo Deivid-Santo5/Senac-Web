@@ -20,16 +20,16 @@ function Login() {
     const auth = getAuth(app);
     const [signInWithEmailAndPassword, user, loadingAuth, error] = useSignInWithEmailAndPassword(auth);
 
-    // Função para login com o Google
+    // FUNÇÃO DE AUTENTIFICAÇÃO DO GOOGLE
     const signInWithGoogle = async () => {
         try {
             const result = await signInWithPopup(auth, provider);
-            // Verifica se o usuário foi autenticado com sucesso
+            // VARIAVEL QUE IDENTIFICA A AUTENFICAÇÃO DO USUARIO
             if (result.user) {
                 navigate('/Home');
             }
         } catch (error) {
-            // Trate o erro aqui
+            // CASO O USUARIO NÃO FOR AUTENTICADO 
             console.error(error);
         }
     };
@@ -39,7 +39,7 @@ function Login() {
         setLoading(loadingAuth);
     }, [loadingAuth]);
 
-    // Função para lidar com a autenticação por email e senha
+    // FUNÇÃO QUE LIDA COM AUTENFICAÇÃO DE EMAIL
     const handleSignIn = async (e) => {
         e.preventDefault();
 
@@ -83,10 +83,10 @@ function Login() {
 
     return (
         <div>
-            {/* Exibe animação de carregamento se estiver carregando */}
+
             {loading && <span className='logando' />}
             <div className='modal-dialog modal-sm' >
-                {/* Modal de atenção */}
+
                 <Modal className="modal-1" show={showModal} onHide={handleClose}>
                     <Modal.Title>Atenção</Modal.Title>
                     {modalContent}
@@ -97,7 +97,7 @@ function Login() {
                     </Modal.Footer>
                 </Modal>
 
-                {/* Esconde a tela de login se estiver carregando */}
+
                 {!loading && (
                     <div className="container">
                         <div className="container-login">
@@ -140,10 +140,12 @@ function Login() {
                                     </div>
 
                                     <div className="text-center">
-                                        <span className="txt1">Não possui conta?</span>
+                                        <span className="txt1"> Não possui conta?</span>
+                                        <div>
                                         <Link className="txt2" to="/Register">
                                             Criar Conta.
                                         </Link>
+                                        </div> 
                                     </div>
                                 </form>
                             </div>

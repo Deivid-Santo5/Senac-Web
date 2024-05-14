@@ -13,13 +13,14 @@ export default function Home() {
 
 
 
-                <h1>Central de Agendamento<span>SENAC</span></h1>
+                <h1>Central de Agendamento<span>SENAC CONECTA</span></h1>
                 <p>Para começar, escolha o que você deveja reservar!</p>
 
-                <Button to="/Sala" text="Ver Salas Disponiveis" />
-                <Button to="/Equipamento" text="Ver Equipamentos Disponiveis" />
+                <Button to="/Sala" text="Agendar Salas" />
+                <Button to="/Equipamento" text="Agendar Equipamentos" />
                 <Button to="/Gerenciamento" text="Gerenciar Serviços" />
                 <Button to="/Relatorios" text="Ver Registros" />
+                <Button to="/Developer" text="Saiba mais" />
 
             </section>
         </div>

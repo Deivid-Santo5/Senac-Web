@@ -4,6 +4,7 @@ import { collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc, setDoc 
 import { Modal, Button } from 'react-bootstrap';
 
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -121,7 +122,11 @@ function Gerenciamento() {
             <Button variant="primary" onClick={() => handleOpenModal('room')}>
                 Adicionar Nova Sala
             </Button>
-         
+             
+            {/*Botão para retornar pagina home*/}
+            <Link className='txt2' to="/Home">
+             <Button> Voltar </Button>
+             </Link>
                 
             {/* Botão para abrir o modal para adicionar um novo equipamento */}
             <Button variant="primary" onClick={() => handleOpenModal('equipamento')}>

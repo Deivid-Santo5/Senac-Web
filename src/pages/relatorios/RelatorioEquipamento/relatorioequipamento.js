@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../../../services/firebaseconfig'; // Importando 'db' para acessar Firestore
+import { db } from '../../../services/firebaseconfig';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import './styles.css'; // Importar o CSS para estilização
+import './styles.css';
 import { Link } from 'react-router-dom';
-import ImportPdf from '../../componentes/importpdf/importpdf'; // Corrigindo a importação do componente ImportPdf
+import PDFGenerator1 from '../../componentes/jsPDF - EQUIPAMENTO/jsPDF-equip'; // Importe o componente PDFGenerator
 
 export default function RelatorioEquipamento() {
-    const [agendamentos, setAgendamentos] = useState([]); // State para armazenar os agendamentos
-    const [agendamentoExcluir, setAgendamentoExcluir] = useState(null); // State para armazenar o agendamento a ser excluído
-    const [modalVisible, setModalVisible] = useState(false); // State para controlar a visibilidade do modal de confirmação
+    const [agendamentos, setAgendamentos] = useState([]);
+    const [agendamentoExcluir, setAgendamentoExcluir] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
 
     useEffect(() => {
         const buscarAgendamentos = async () => {
@@ -28,20 +28,12 @@ export default function RelatorioEquipamento() {
         buscarAgendamentos();
     }, []);
 
-    // Função para determinar a classe CSS baseada na data do agendamento
     const getClassByDate = (date) => {
-        const agendamentoDate = new Date(date); // Convertendo a data do agendamento para objeto Date
-        const now = new Date(); // Data atual
-
-        // Verificando se a data do agendamento é menor que a data atual
-        if (agendamentoDate < now) {
-            return 'agendamento-passado';
-        } else {
-            return 'agendamento-futuro';
-        }
+        const agendamentoDate = new Date(date);
+        const now = new Date();
+        return agendamentoDate < now ? 'agendamento-passado' : 'agendamento-futuro';
     };
 
-    // Função para lidar com a exclusão de um agendamento
     const handleExcluirAgendamento = async () => {
         if (agendamentoExcluir) {
             try {
@@ -57,12 +49,12 @@ export default function RelatorioEquipamento() {
 
     return (
         <div className="table-container">
-
-
             <Link to="/Relatorios">
                 <button>Voltar</button>
             </Link>
 
+            <PDFGenerator1 data={agendamentos} />
+            
             <h2>Relatório de Agendamentos de Equipamento</h2>
             <table className="table">
                 <thead>
@@ -71,7 +63,7 @@ export default function RelatorioEquipamento() {
                         <th>Horário</th>
                         <th>Equipamento</th>
                         <th>Solicitante</th>
-                        <th>Ações</th> {/* Adicionando uma coluna para as ações */}
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,18 +77,16 @@ export default function RelatorioEquipamento() {
                                 <button onClick={() => {
                                     setAgendamentoExcluir(agendamento);
                                     setModalVisible(true);
-                                }}>Excluir</button> {/* Botão para excluir o agendamento */}
+                                }}>Excluir</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-
-            {/* Modal de confirmação */}
             {modalVisible && (
                 <div className="modal">
                     <div className="modal-content">
-                        <h3>Atenção</h3>
+                        <h3>Confirmação de Exclusão</h3>
                         <p>Tem certeza que deseja excluir este agendamento?</p>
                         <div className="modal-buttons">
                             <button onClick={handleExcluirAgendamento}>Sim</button>
@@ -105,10 +95,11 @@ export default function RelatorioEquipamento() {
                                 setAgendamentoExcluir(null);
                             }}>Cancelar</button>
                         </div>
-                        <ImportPdf agendamentos={agendamentos} /> {/* Passando os agendamentos para o componente ImportPdf */}
                     </div>
                 </div>
             )}
+            
+           
         </div>
     );
 }
